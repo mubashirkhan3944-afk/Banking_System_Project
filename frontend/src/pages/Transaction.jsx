@@ -17,6 +17,7 @@ const Transaction = () => {
     const navigate = useNavigate();
     const[error,seterror]=useState();
     const [success, setSuccess] = useState('');
+    const [loading, setloading] = useState(false)
 
     const handleInputChange = (e)=>{
         const {name,value}=e.target;
@@ -29,9 +30,11 @@ const Transaction = () => {
   
     async function formHandle(e){
         e.preventDefault();
+        setloading(true)
 
         if(formData.amount<=0){
             seterror("Amount must be greater than 0")
+            setloading(false)
             return;
         }
 
@@ -41,21 +44,25 @@ const Transaction = () => {
         .then((response)=>{
                 setSuccess(response.data.message);
                 alert('Transaction Successful')
+                setloading(false)
                 navigate('/home')
                 
         })
         .catch((error)=>{
             seterror(error.response.data.message);
+            setloading(false)
         })
         }else{
               await axios.post('https://nexus-banking-ti17.onrender.com/api/transaction/system/initial-fund',formData,{withCredentials:true})
               .then((response)=>{
                     setSuccess(response.data.message);
                     alert('Transaction Successful')
+                    setloading(false)
                     navigate('/home')
         })
         .catch((error)=>{
             seterror(error.response.data.message);
+            setloading(false)
         })
         }
     }
@@ -65,7 +72,7 @@ const Transaction = () => {
         <div className='bg-slate-950 text-slate-100 flex flex-col justify-center items-center  '>
             {/* Error Alert */}
         {error && (
-          <div className=" p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm flex items-center gap-2.5 absolute top-80 z-50">
+          <div className=" p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm flex items-center gap-2.5 absolute top-8 z-50">
             <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -153,9 +160,20 @@ const Transaction = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full mt-4 py-3 px-4 bg-gradient-to-r from-blue-600 to-emerald-500 hover:from-blue-500 hover:to-emerald-400 text-white font-medium rounded-xl shadow-lg shadow-blue-600/25 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all flex items-center justify-center gap-2 cursor-pointer"
+            disabled={loading}
+            className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-blue-600 to-emerald-500 hover:from-blue-500 hover:to-emerald-400 text-white font-medium rounded-xl shadow-lg shadow-blue-600/25 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
           >
-            <span>Send Money</span>
+            {loading ? (
+              <>
+                <svg className="animate-spin w-5 h-5 text-white" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                </svg>
+                <span>Transferring...</span>
+              </>
+            ) : (
+              <span>Transfer Amount</span>
+            )}
           </button>
         </form>
 
