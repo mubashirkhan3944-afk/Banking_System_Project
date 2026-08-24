@@ -9,7 +9,7 @@ const Logout = () => {
     const handleLogout = async () => {
       try {
 
-        const response = await axios.get('https://banking-system-project.onrender.com/api/auth/logout', {withCredentials:true})
+        const response = await axios.get('https://nexus-banking-ti17.onrender.com/api/auth/logout', {withCredentials:true})
         console.log(response);
       } catch (err) {
 

@@ -37,7 +37,7 @@ const Transaction = () => {
 
 
         if(!systemUser){
-            await axios.post('https://banking-system-project.onrender.com/api/transaction/',formData,{withCredentials:true})
+            await axios.post('https://nexus-banking-ti17.onrender.com/api/transaction/',formData,{withCredentials:true})
         .then((response)=>{
                 setSuccess(response.data.message);
                 alert('Transaction Successful')
@@ -48,7 +48,7 @@ const Transaction = () => {
             seterror(error.response.data.message);
         })
         }else{
-              await axios.post('https://banking-system-project.onrender.com/api/transaction/system/initial-fund',formData,{withCredentials:true})
+              await axios.post('https://nexus-banking-ti17.onrender.com/api/transaction/system/initial-fund',formData,{withCredentials:true})
               .then((response)=>{
                     setSuccess(response.data.message);
                     alert('Transaction Successful')

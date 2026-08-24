@@ -17,7 +17,7 @@ const Homepage = () => {
     useEffect(()=>{
         async function getUserAccounts(){
             try{
-                const response = await axios.get('https://banking-system-project.onrender.com/api/account/',{withCredentials:true});
+                const response = await axios.get('https://nexus-banking-ti17.onrender.com/api/account/',{withCredentials:true});
 
 
                 if(response.data.user.systemUser){
@@ -40,7 +40,7 @@ const Homepage = () => {
             }
         }
         async function getTransactionHistory(){
-            const response = await axios.get('https://banking-system-project.onrender.com/api/account/transactions',{
+            const response = await axios.get('https://nexus-banking-ti17.onrender.com/api/account/transactions',{
                 withCredentials:true
             })
 

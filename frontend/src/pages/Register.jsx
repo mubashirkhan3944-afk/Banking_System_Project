@@ -57,7 +57,7 @@ const Register = () => {
     try {
       
 
-        const response = await axios.post('https://banking-system-project.onrender.com/api/auth/register',formData,{withCredentials:true});
+        const response = await axios.post('https://nexus-banking-ti17.onrender.com/api/auth/register',formData,{withCredentials:true});
 
         navigate('/login');
       setSuccess(response.data.message || 'Account created successfully!');

@@ -58,13 +58,10 @@ const Login = () => {
     try {
       
 
-       const response =  await axios.post('https://banking-system-project.onrender.com/api/auth/login',formData,{withCredentials:true});
+       const response =  await axios.post('https://nexus-banking-ti17.onrender.com/api/auth/login',formData,{withCredentials:true});
 
-console.log(response)
       setSuccess('Login successful! Redirecting...');
-      if (response.data.token) {
-        localStorage.setItem('token', response.data.token);
-      }
+      const account = await axios.get('https://nexus-banking-ti17.onrender.com/api/account',{withCredentials:true})
       navigate('/home')
     } catch (err) {
       setError(  err.response.data.message || 'Something went wrong. Please check your network connection.');

@@ -8,7 +8,7 @@ const Admin = () => {
 
   async function fetchUser(){
     try {
-      const response = await axios.get(`https://banking-system-project.onrender.com/api/account/get-user/${userId}`,{withCredentials : true})
+      const response = await axios.get(`https://nexus-banking-ti17.onrender.com/api/account/get-user/${userId}`,{withCredentials : true})
       setuserData(response.data);
       console.log(response);
     } catch (error) {

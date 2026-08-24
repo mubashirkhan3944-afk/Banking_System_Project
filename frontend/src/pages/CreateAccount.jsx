@@ -10,7 +10,7 @@ const CreateAccount = () => {
 async function formSubmit(e){
   e.preventDefault();
 
-await axios.post('https://banking-system-project.onrender.com/api/account/create-account',{},{withCredentials:true})
+await axios.post('https://nexus-banking-ti17.onrender.com/api/account/create-account',{},{withCredentials:true})
 .then((response)=>{
     navigate('/home');
 })
