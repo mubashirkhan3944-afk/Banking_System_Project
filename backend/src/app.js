@@ -6,13 +6,14 @@ const accountRoutes = require('./routes/account.routes');
 const transactionRoutes = require('./routes/transaction.routes')
 const cors = require('cors')
 
+
+app.use(cors({
+    origin: 'https://nexus-banking-1.onrender.com',
+    credentials:true
+}))
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-    origin: ['https://nexus-banking-1.onrender.com','https://nexus-banking-1.onrender.com/login'],
-    credentials:true
-}))
 
 app.use('/api/auth',authroutes);
 app.use('/api/account',accountRoutes);
