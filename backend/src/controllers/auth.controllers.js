@@ -1,6 +1,6 @@
 const userModel = require('../models/user.model');
 const jwt = require('jsonwebtoken');
-const emailservice = require('../services/mail.service');
+// const emailservice = require('../services/mail.service');
 const tokenBlackListModel = require('../models/blacklist.model');
 
 /**  * -POST /api/auth/register  */

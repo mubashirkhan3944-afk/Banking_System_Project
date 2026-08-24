@@ -2,7 +2,7 @@ const transactionModel = require('../models/transaction.model');
 const ledgerModel = require('../models/ledger.model');
 const accountModel = require('../models/account.model');
 const mongoose = require('mongoose');
-const emailservice = require('../services/mail.service');
+// const emailservice = require('../services/mail.service');
 const userModel = require('../models/user.model');
 const {v4} = require('uuid')
 
