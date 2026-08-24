@@ -10,7 +10,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: 'https://nexus-banking-1.onrender.com',
+    origin: ['https://nexus-banking-1.onrender.com','https://nexus-banking-1.onrender.com/login'],
     credentials:true
 }))
 
