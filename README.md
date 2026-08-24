@@ -1,6 +1,6 @@
 A banking web service where you can have full banking experience..
 You can create account but it will have 0 funds.
-To use an existing account add transfer funds, Use credentials:
+To use an existing account and transfer funds, Use credentials:
 1. username: Test12345
 2. email: test@test.com
 3. password: test12345
